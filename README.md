@@ -2,9 +2,14 @@
 
 This package to get Google Blogger Post and Page details from Blog using Blogger API.
 
-## Demo
+## Images
 
-https://user-images.githubusercontent.com/58139175/210208088-1dbc9bc8-c5dc-4fd7-ad47-a4d0149facbb.mp4
+
+:--------------------------------------:|:---------------------------------:
+
+<img src="https://user-images.githubusercontent.com/58139175/210225315-694cf35f-9b2c-4e07-aab4-6d52fb54802e.png?raw=true" width="250">  |  <img src="https://user-images.githubusercontent.com/58139175/210225403-fb8a0857-25d8-4023-ab71-ac84e94dc620.png?raw=true)" width="250">
+
+<img src="https://user-images.githubusercontent.com/58139175/210225548-06dd0b08-f47a-48e6-9573-7fe5c36b7e58.png?raw=true" width="250">  |  <img src="https://user-images.githubusercontent.com/58139175/210225637-7d97a25c-95a1-4ed1-9110-6243678eec0e.png?raw=true)" width="250">
 
 
 #### Platform Support

@@ -14,7 +14,11 @@ class PostItemModel {
   final String? selfLink;
   final String? title;
   final String? content;
+
+  /// This is [Author] type it have all the author parameters
   final Author? author;
+
+  /// This is [Replies] type it have all the replies parameters
   final Replies? replies;
   final String? etag;
   final List<String>? labels;
@@ -36,6 +40,7 @@ class PostItemModel {
     this.labels,
   });
 
+  /// This is will help us to create Map Data
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
@@ -82,6 +87,7 @@ class PostItemModel {
     return result;
   }
 
+  /// This is will help us to create object from Map
   factory PostItemModel.fromMap(Map<String, dynamic> map) {
     return PostItemModel(
       kind: map['kind'],
@@ -108,6 +114,7 @@ class PostItemModel {
 
   String toJson() => json.encode(toMap());
 
+  /// This is will help us to create object from json input
   factory PostItemModel.fromJson(String source) =>
       PostItemModel.fromMap(json.decode(source));
 

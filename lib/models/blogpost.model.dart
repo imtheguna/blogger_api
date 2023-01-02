@@ -18,6 +18,7 @@ class BlogPage {
     return result;
   }
 
+  /// This is will help us to create object from Map
   factory BlogPage.fromMap(Map<String, dynamic> map) {
     return BlogPage(
       totalItems: map['totalItems']?.toInt() ?? 0,
@@ -27,6 +28,7 @@ class BlogPage {
 
   String toJson() => json.encode(toMap());
 
+  /// This is will help us to create object from json input
   factory BlogPage.fromJson(String source) =>
       BlogPage.fromMap(json.decode(source));
 }

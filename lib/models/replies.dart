@@ -13,6 +13,7 @@ class Replies {
     this.postComments,
   });
 
+  /// This is will help us to create Map Data
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
@@ -30,6 +31,7 @@ class Replies {
     return result;
   }
 
+  /// This is will help us to create object from Map
   factory Replies.fromMap(Map<String, dynamic> map) {
     return Replies(
       totalItems: int.parse(map['totalItems']), // map['totalItems']?.toInt(),
@@ -43,6 +45,7 @@ class Replies {
 
   String toJson() => json.encode(toMap());
 
+  /// This is will help us to create object from json input
   factory Replies.fromJson(String source) =>
       Replies.fromMap(json.decode(source));
 

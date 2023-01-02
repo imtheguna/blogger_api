@@ -5,6 +5,8 @@ import 'package:blogger_api/models/postitem.model.dart';
 /// [PostModel] This is PostModel Model class
 class PostModel {
   final String? kind;
+
+  /// This is [PostItemModel] Type it have all the post parameters
   final List<PostItemModel>? items;
   final String? etag;
   final String? error;
@@ -15,6 +17,7 @@ class PostModel {
     this.error,
   });
 
+  /// This is will help us to create Map Data
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
@@ -34,6 +37,7 @@ class PostModel {
     return result;
   }
 
+  /// This is will help us to create object from Map
   factory PostModel.fromMap(Map<String, dynamic> map) {
     return PostModel(
       kind: map['kind'],
@@ -48,6 +52,7 @@ class PostModel {
 
   String toJson() => json.encode(toMap());
 
+  /// This is will help us to create object from json input
   factory PostModel.fromJson(String source) =>
       PostModel.fromMap(json.decode(source));
 

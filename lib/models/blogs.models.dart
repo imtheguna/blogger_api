@@ -5,6 +5,7 @@ import 'package:blogger_api/models/blogpage.model.dart';
 import 'package:blogger_api/models/blogpost.model.dart';
 
 /// [BlogsModel] This is BlogsModel Model class
+/// Here we are using [BlogPost] [BlogPage] [BlogLocale]
 class BlogsModel {
   final String? kind;
   final String? id;
@@ -15,8 +16,14 @@ class BlogsModel {
   final String? url;
   final String? selfLink;
   final String? error;
+
+  /// This is [BlogPost] type it have all the posts parameters
   final BlogPost? posts;
+
+  /// This is [BlogPage] type it have all the pages parameters
   final BlogPage? pages;
+
+  /// This is [BlogLocale] type it have all the locale parameters
   final BlogLocale? locale;
   BlogsModel({
     this.kind,
@@ -33,6 +40,7 @@ class BlogsModel {
     this.locale,
   });
 
+  /// This is will help us to create Map Data
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
@@ -76,6 +84,7 @@ class BlogsModel {
     return result;
   }
 
+  /// This is will help us to create object from Map
   factory BlogsModel.fromMap(Map<String, dynamic> map) {
     return BlogsModel(
       kind: map['kind'],
@@ -101,6 +110,7 @@ class BlogsModel {
 
   String toJson() => json.encode(toMap());
 
+  /// This is will help us to create object from json input
   factory BlogsModel.fromJson(String source) =>
       BlogsModel.fromMap(json.decode(source));
 

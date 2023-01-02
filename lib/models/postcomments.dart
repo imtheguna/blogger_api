@@ -12,6 +12,8 @@ class PostComments {
   final DateTime? updated;
   final String? selfLink;
   final String? content;
+
+  /// This is [Author] type it have all the author parameters
   final Author? author;
   final String? error;
   PostComments(
@@ -26,6 +28,7 @@ class PostComments {
       this.author,
       this.error});
 
+  /// This is will help us to create Map Data
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
@@ -60,6 +63,7 @@ class PostComments {
     return result;
   }
 
+  /// This is will help us to create object from Map
   factory PostComments.fromMap(Map<String, dynamic> map) {
     return PostComments(
       kind: map['kind'],
@@ -82,6 +86,7 @@ class PostComments {
 
   String toJson() => json.encode(toMap());
 
+  /// This is will help us to create object from json input
   factory PostComments.fromJson(String source) =>
       PostComments.fromMap(json.decode(source));
 

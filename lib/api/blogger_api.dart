@@ -31,6 +31,8 @@ class BloggerAPI {
         Uri.parse('$blogApiUrlByid/$blogId?key=$apiKey'),
       );
       switch (res.statusCode) {
+
+        /// if the status code is 2000 then you API call is Successful and we got the datat from server
         case 200:
           blogsModel = BlogsModel.fromJson(res.body);
           blogsModel = blogsModel
@@ -42,9 +44,12 @@ class BloggerAPI {
 
           break;
         default:
+
+          /// we got some error so it;s update in [Error] column
           blogsModel = BlogsModel(error: res.body);
       }
     } catch (e) {
+      /// we got some error so it;s update in [Error] column
       blogsModel = BlogsModel(error: e.toString());
     }
     return blogsModel;
@@ -68,6 +73,8 @@ class BloggerAPI {
           Uri.parse('$blogApiUrlByid/${blogId[i]}?key=$apiKey'),
         );
         switch (res.statusCode) {
+
+          /// if the status code is 2000 then you API call is Successful and we got the datat from server
           case 200:
             blogsModel = BlogsModel.fromJson(res.body);
             blogsModel = blogsModel
@@ -79,9 +86,12 @@ class BloggerAPI {
 
             break;
           default:
+
+            /// we got some error so it;s update in [Error] column
             blogsModel = BlogsModel(error: res.body);
         }
       } catch (e) {
+        /// we got some error so it;s update in [Error] column
         blogsModel = BlogsModel(error: e.toString());
       }
       blogsModels.add(blogsModel);
@@ -110,6 +120,8 @@ class BloggerAPI {
           .get(Uri.parse('$blogApiUrlByid/$blogId/posts?key=$apiKey'));
 
       switch (res.statusCode) {
+
+        /// if the status code is 2000 then you API call is Successful and we got the datat from server
         case 200:
           if (jsonDecode(res.body)['items'] != null) {
             for (int i = 0; i < jsonDecode(res.body)['items'].length; i++) {
@@ -174,6 +186,7 @@ class BloggerAPI {
               kind: jsonDecode(res.body)['kind'],
             );
           } else {
+            /// it means no items in the Blog
             postModel = PostModel(
               items: [],
               error: null,
@@ -183,9 +196,12 @@ class BloggerAPI {
           }
           break;
         default:
+
+          /// we got some error so it;s update in [Error] column
           postModel = PostModel(error: res.body, items: null);
       }
     } catch (e) {
+      /// we got some error so it;s update in [Error] column
       postModel = PostModel(error: e.toString());
     }
     return postModel;
@@ -211,6 +227,8 @@ class BloggerAPI {
           .get(Uri.parse('$blogApiUrlByid/$blogId/pages?key=$apiKey'));
 
       switch (res.statusCode) {
+
+        /// if the status code is 2000 then you API call is Successful and we got the datat from server
         case 200:
           if (jsonDecode(res.body)['items'] != null) {
             for (int i = 0; i < jsonDecode(res.body)['items'].length; i++) {
@@ -230,6 +248,7 @@ class BloggerAPI {
               items: items,
             );
           } else {
+            /// it means no items in the Blog
             pageModel = PageModel(
               error: null,
               etag: jsonDecode(res.body)['etag'],
@@ -240,9 +259,12 @@ class BloggerAPI {
 
           break;
         default:
+
+          /// we got some error so it;s update in [Error] column
           pageModel = PageModel(error: res.body, items: null);
       }
     } catch (e) {
+      /// we got some error so it;s update in [Error] column
       pageModel = PageModel(error: e.toString());
     }
     return pageModel;
