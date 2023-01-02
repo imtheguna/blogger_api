@@ -21,7 +21,7 @@ This package to get Google Blogger Post and Page details from Blog using Blogger
 
 ## Platform integration 
 
-You don't need to include the google-services.json file in your app unless you are using Google services that require it. You do need to enable the Blogger API, using then [Google Cloud Platform API manager](https://console.cloud.google.com/apis/library/blogger.googleapis.com?project=docs-372812), and Create New Project the Go to Credentials Page and Create New credentials For API Key.
+You don't need to include the google-services.json file in your app unless you are using Google services that require it. You do need to enable the Blogger API using [Google Cloud Platform API manager](https://console.cloud.google.com/apis/library/blogger.googleapis.com?project=docs-372812), and Create New Project then Go to Credentials Page and Create New credentials For API Key.
 
 
 #### How to Use 
