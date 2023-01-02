@@ -92,7 +92,7 @@ Return Type `Future<PageModel>`
 Passionate #Flutter, #Android Developer. #UI Designer.
 
 
-<a href="https://www.linkedin.com/in/gunanithi-cs/"><img src="https://github.com/aritraroy/social-icons/blob/master/linkedin-icon.png?raw=true" width="60"></a>
+<a href="https://www.linkedin.com/in/imtheguna/"><img src="https://raw.githubusercontent.com/aritraroy/social-icons/master/linkedin-icon.png" width="60"></a> <a href="https://medium.com/@imtheguna"><img src="https://raw.githubusercontent.com/aritraroy/social-icons/master/medium-icon.png" width="60"></a>
 
 #### Issues, questions and contributing
 
