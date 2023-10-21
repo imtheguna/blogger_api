@@ -13,7 +13,9 @@ class PagesView extends StatefulWidget {
 
 class _PageViewState extends State<PagesView> {
   Future<PageModel> getAlloage() async {
-    final res = await BloggerAPI().getAllPageFromBlog(
+    BloggerAPI bloggerAPI =
+        BloggerAPI(apiKey: widget.apiKey, blogId: widget.blogId);
+    final res = await bloggerAPI.getAllPageFromBlog(
       blogId: widget.blogId,
       apiKey: widget.apiKey,
     );

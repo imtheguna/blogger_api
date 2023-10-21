@@ -12,13 +12,13 @@ class PostPage extends StatefulWidget {
 }
 
 class _PostPageState extends State<PostPage> {
-  Future<PostModel> getAllpost() async {
-    final res = await BloggerAPI().getAllPostFromBlog(
-      includeComment: true,
-      blogId: widget.blogId,
-      apiKey: widget.apiKey,
-    );
+  BloggerAPI bloggerAPI =
+      BloggerAPI(apiKey: widget.apiKey, blogId: widget.blogId);
 
+  Future<PostModel> getAllpost() async {
+    final res = await bloggerAPI.getAllPostFromBlog(
+      includeComment: true,
+    );
     return res;
   }
 

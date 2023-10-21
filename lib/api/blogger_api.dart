@@ -16,6 +16,10 @@ import 'package:http/http.dart';
 ///
 /// if you don't have API go to https://console.cloud.google.com/ and create your API
 class BloggerAPI {
+  String apiKey;
+  String blogId;
+  BloggerAPI({required this.apiKey, required this.blogId});
+
   /// [getBlogByID] This function will return [Blog], [Post] and [Page] details.
   ///
   /// We need to pass [BlogId] and [ApiKey].
@@ -23,15 +27,13 @@ class BloggerAPI {
   /// if the [statusCode] is 200 then the API call is Successful elase the will be updated in [BlogsModel.error] field.
   ///
   /// if [BlogsModel.error] is null then your all is Successful.
-  Future<BlogsModel> getBlogByID(
-      {required String blogId, required String apiKey}) async {
+  Future<BlogsModel> getBlogByID({required String blogId}) async {
     BlogsModel blogsModel = BlogsModel(error: 'API Call Failed');
     try {
       final res = await http.get(
         Uri.parse('$blogApiUrlByid/$blogId?key=$apiKey'),
       );
       switch (res.statusCode) {
-
         /// if the status code is 2000 then you API call is Successful and we got the datat from server
         case 200:
           blogsModel = BlogsModel.fromJson(res.body);
@@ -57,23 +59,21 @@ class BloggerAPI {
 
   /// [getAllBlogs] This function will return all [Blog].
   ///
-  /// We need to pass listof [BlogId] and [ApiKey].
+  /// We need to pass listof [blogIds].
   ///
   /// if the [statusCode] is 200 then the API call is Successful elase the will be updated in [BlogsModel.error] field.
   ///
   /// if [BlogsModel.error] is null then your all is Successful.
-  Future<List<BlogsModel>> getAllBlogs(
-      {required List<String> blogId, required String apiKey}) async {
+  Future<List<BlogsModel>> getAllBlogs({required List<String> blogIds}) async {
     List<BlogsModel> blogsModels = [];
 
-    for (int i = 0; i < blogId.length; i++) {
+    for (int i = 0; i < blogIds.length; i++) {
       BlogsModel blogsModel = BlogsModel(error: 'API Call Failed');
       try {
         final res = await http.get(
-          Uri.parse('$blogApiUrlByid/${blogId[i]}?key=$apiKey'),
+          Uri.parse('$blogApiUrlByid/${blogIds[i]}?key=$apiKey'),
         );
         switch (res.statusCode) {
-
           /// if the status code is 2000 then you API call is Successful and we got the datat from server
           case 200:
             blogsModel = BlogsModel.fromJson(res.body);
@@ -109,10 +109,7 @@ class BloggerAPI {
   /// if [BlogsModel.error] is null then your all is Successful.
   ///
   /// Post Comment is included [Replies.postComments] so this function will take some time to get all [post] and [Comments] based on [blog] size.
-  Future<PostModel> getAllPostFromBlog(
-      {required String blogId,
-      required String apiKey,
-      bool includeComment = false}) async {
+  Future<PostModel> getAllPostFromBlog({bool includeComment = false}) async {
     PostModel postModel = PostModel(error: 'API Call Failed', items: []);
     List<PostItemModel>? items = [];
     try {
@@ -120,7 +117,6 @@ class BloggerAPI {
           .get(Uri.parse('$blogApiUrlByid/$blogId/posts?key=$apiKey'));
 
       switch (res.statusCode) {
-
         /// if the status code is 2000 then you API call is Successful and we got the datat from server
         case 200:
           if (jsonDecode(res.body)['items'] != null) {
@@ -209,17 +205,14 @@ class BloggerAPI {
 
   /// [getAllPageFromBlog] This function will return all [Pages] in the [blog]
   ///
-  /// We need to pass [BlogId] and [ApiKey].
+  /// We need to pass [BlogId].
   ///
   /// if the [statusCode] is 200 then the API call is Successful elase the will be updated in [BlogsModel.error] field.
   ///
   /// if [PageModel.error] is null then your all is Successful.
   ///
   /// As of  the API Not return Page Comments so [Replies] is null for all the pages
-  Future<PageModel> getAllPageFromBlog({
-    required String blogId,
-    required String apiKey,
-  }) async {
+  Future<PageModel> getAllPageFromBlog() async {
     PageModel pageModel = PageModel(error: 'API Call Failed');
     List<PostItemModel>? items = [];
     try {
@@ -227,7 +220,6 @@ class BloggerAPI {
           .get(Uri.parse('$blogApiUrlByid/$blogId/pages?key=$apiKey'));
 
       switch (res.statusCode) {
-
         /// if the status code is 2000 then you API call is Successful and we got the datat from server
         case 200:
           if (jsonDecode(res.body)['items'] != null) {
