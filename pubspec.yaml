@@ -1,17 +1,16 @@
 name: blogger_api
 description: This package to get Google Blogger Post and Page details from Blog.
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/imtheguna/blogger_api
 
 environment:
-  sdk: '>=2.18.5 <3.0.0'
+  sdk: ">=2.18.5 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.5
-  
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -22,7 +21,6 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
 flutter: null
-
 # To add assets to your package, add an assets section, like this:
 # assets:
 #   - images/a_dot_burr.jpeg

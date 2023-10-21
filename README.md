@@ -14,9 +14,9 @@ This package to get Google Blogger Post and Page details from Blog using Blogger
 
 #### Platform Support
 
-| Android | iOS | MacOS | Web | Linux | Windows |
-| :-----: | :-: | :---: | :-: | :---: | :-----: |
-|   ✔️    | ✔️  |  ✔️   | ✔️  |  ✔️   |   ✔️    |
+| Android |  iOS  | MacOS |  Web  | Linux | Windows |
+| :-----: | :---: | :---: | :---: | :---: | :-----: |
+|    ✔️    |   ✔️   |   ✔️   |   ✔️   |   ✔️   |    ✔️    |
 
 
 ## Platform integration 
@@ -32,7 +32,10 @@ import 'package:blogger_api/blogger_api.dart';
 ```
 
 ```
-BloggerAPI bloggerAPI = BloggerAPI()
+BloggerAPI bloggerAPI = BloggerAPI(
+    blogId: 'Your Blog Id', 
+    apiKey: 'Your API Key' 
+)
 ```
 
 
@@ -40,8 +43,7 @@ BloggerAPI bloggerAPI = BloggerAPI()
 
 ```
 bloggerAPI.getBlogByID(
-    blogId: 'Your Blog Id', 
-    apiKey: 'Your API Key' 
+    blogId: 'Your Blog Id',
 )
 ```
 
@@ -52,8 +54,7 @@ Return Type  `Future<BlogsModel>`
 
 ```
 bloggerAPI.getBlogByID(
-    blogId: ['Your Blog Ids'], 
-    apiKey: 'Your API Key' 
+    blogIds: ['Your Blog Ids'], 
 )
 ```
 
@@ -64,8 +65,6 @@ Return Type `Future<List<BlogsModel>>`
 
 ```
 bloggerAPI.getAllPostFromBlog(
-    blogId: 'Your Blog Ids', 
-    apiKey: 'Your API Key' 
     includeComment: false // If need you can read all the Comments from Posts.
 )
 ```
@@ -75,10 +74,7 @@ Return Type `Future<PostModel>`
 #### Get All the Page Details By Blog Id
 
 ```
-bloggerAPI.getAllPageFromBlog(
-    blogId: 'Your Blog Ids', 
-    apiKey: 'Your API Key' 
-)
+bloggerAPI.getAllPageFromBlog()
 ```
 
 Return Type `Future<PageModel>`

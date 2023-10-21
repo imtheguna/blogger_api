@@ -35,9 +35,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String apiKey = 'YOUR_BLOG_ID';
+  String blogId = 'YOUR_BLOG_ID';
+  String blogIds = 'YOUR_BLOG_ID';
+  BloggerAPI bloggerAPI = BloggerAPI(
+    apiKey: apiKey,
+    blogId: blogId
+  );
   Future<List<BlogsModel>> getAllBlogs() async {
-    final res = await BloggerAPI().getAllBlogs(apiKey: key, blogId: blogIds);
-
+    final res = await bloggerAPI.getAllBlogs(blogIds: blogIds);
     return res;
   }
 
