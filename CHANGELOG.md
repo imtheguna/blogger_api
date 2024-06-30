@@ -1,3 +1,8 @@
+## [0.0.5]
+
+* Comments Added
+* maxResults Added in page and post
+
 ## [0.0.4]
 
 * Comments Added

@@ -14,10 +14,10 @@ class PostPage extends StatefulWidget {
 class _PostPageState extends State<PostPage> {
   Future<PostModel> getAllpost() async {
     final res = await BloggerAPI().getAllPostFromBlog(
-      includeComment: true,
-      blogId: widget.blogId,
-      apiKey: widget.apiKey,
-    );
+        includeComment: true,
+        blogId: widget.blogId,
+        apiKey: widget.apiKey,
+        maxresult: 1);
 
     return res;
   }
@@ -26,7 +26,7 @@ class _PostPageState extends State<PostPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Posts'),
+        title: const Text('Post'),
       ),
       body: FutureBuilder(
           future: getAllpost(),

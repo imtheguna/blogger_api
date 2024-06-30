@@ -31,7 +31,6 @@ class BloggerAPI {
         Uri.parse('$blogApiUrlByid/$blogId?key=$apiKey'),
       );
       switch (res.statusCode) {
-
         /// if the status code is 2000 then you API call is Successful and we got the datat from server
         case 200:
           blogsModel = BlogsModel.fromJson(res.body);
@@ -73,7 +72,6 @@ class BloggerAPI {
           Uri.parse('$blogApiUrlByid/${blogId[i]}?key=$apiKey'),
         );
         switch (res.statusCode) {
-
           /// if the status code is 2000 then you API call is Successful and we got the datat from server
           case 200:
             blogsModel = BlogsModel.fromJson(res.body);
@@ -102,25 +100,26 @@ class BloggerAPI {
 
   /// [getAllPostFromBlog] This function will return all [Post] in the [blog]
   ///
-  /// We need to pass [BlogId] and [ApiKey].
+  /// We need to pass [BlogId], [IncludeComment], [ApiKey] and [MaxResult] Max page data
   ///
   /// if the [statusCode] is 200 then the API call is Successful elase the will be updated in [BlogsModel.error] field.
   ///
   /// if [BlogsModel.error] is null then your all is Successful.
   ///
   /// Post Comment is included [Replies.postComments] so this function will take some time to get all [post] and [Comments] based on [blog] size.
-  Future<PostModel> getAllPostFromBlog(
-      {required String blogId,
-      required String apiKey,
-      bool includeComment = false}) async {
+  Future<PostModel> getAllPostFromBlog({
+    required String blogId,
+    required String apiKey,
+    bool includeComment = false,
+    int maxresult = 10,
+  }) async {
     PostModel postModel = PostModel(error: 'API Call Failed', items: []);
     List<PostItemModel>? items = [];
     try {
-      final res = await http
-          .get(Uri.parse('$blogApiUrlByid/$blogId/posts?key=$apiKey'));
+      final res = await http.get(Uri.parse(
+          '$blogApiUrlByid/$blogId/posts?maxResults=$maxresult&key=$apiKey'));
 
       switch (res.statusCode) {
-
         /// if the status code is 2000 then you API call is Successful and we got the datat from server
         case 200:
           if (jsonDecode(res.body)['items'] != null) {
@@ -209,7 +208,7 @@ class BloggerAPI {
 
   /// [getAllPageFromBlog] This function will return all [Pages] in the [blog]
   ///
-  /// We need to pass [BlogId] and [ApiKey].
+  /// We need to pass [BlogId] and [ApiKey] and [MaxResult] Max page data
   ///
   /// if the [statusCode] is 200 then the API call is Successful elase the will be updated in [BlogsModel.error] field.
   ///
@@ -219,15 +218,17 @@ class BloggerAPI {
   Future<PageModel> getAllPageFromBlog({
     required String blogId,
     required String apiKey,
+    int maxresult = 10,
   }) async {
     PageModel pageModel = PageModel(error: 'API Call Failed');
     List<PostItemModel>? items = [];
     try {
-      final res = await http
-          .get(Uri.parse('$blogApiUrlByid/$blogId/pages?key=$apiKey'));
+      print('$blogApiUrlByid/$blogId/pages?maxresult=$maxresult&key=$apiKey');
+
+      final res = await http.get(Uri.parse(
+          '$blogApiUrlByid/$blogId/pages?maxResults=$maxresult&key=$apiKey'));
 
       switch (res.statusCode) {
-
         /// if the status code is 2000 then you API call is Successful and we got the datat from server
         case 200:
           if (jsonDecode(res.body)['items'] != null) {

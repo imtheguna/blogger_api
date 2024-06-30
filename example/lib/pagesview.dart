@@ -16,6 +16,7 @@ class _PageViewState extends State<PagesView> {
     final res = await BloggerAPI().getAllPageFromBlog(
       blogId: widget.blogId,
       apiKey: widget.apiKey,
+      maxresult: 1,
     );
 
     return res;
@@ -25,7 +26,7 @@ class _PageViewState extends State<PagesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Posts'),
+        title: const Text('Page'),
       ),
       body: FutureBuilder(
           future: getAlloage(),
