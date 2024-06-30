@@ -65,7 +65,8 @@ Return Type `Future<List<BlogsModel>>`
 ```
 bloggerAPI.getAllPostFromBlog(
     blogId: 'Your Blog Ids', 
-    apiKey: 'Your API Key' 
+    apiKey: 'Your API Key',
+    maxresult: 1,
     includeComment: false // If need you can read all the Comments from Posts.
 )
 ```
@@ -77,7 +78,8 @@ Return Type `Future<PostModel>`
 ```
 bloggerAPI.getAllPageFromBlog(
     blogId: 'Your Blog Ids', 
-    apiKey: 'Your API Key' 
+    apiKey: 'Your API Key',
+    maxresult: 1
 )
 ```
 
