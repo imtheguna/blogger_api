@@ -1,3 +1,7 @@
+## [0.0.6]
+
+* Fixed dependency conflict issue #03
+
 ## [0.0.5]
 
 * Comments Added

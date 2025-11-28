@@ -1,16 +1,16 @@
 name: blogger_api
 description: This package to get Google Blogger Post and Page details from Blog.
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/imtheguna/blogger_api
 
 environment:
-  sdk: '>=2.18.5 <3.0.0'
+  sdk: ">=3.2.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.5
+  http: ^1.6.0
   
 
 dev_dependencies:
